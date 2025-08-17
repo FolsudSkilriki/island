@@ -28,7 +28,7 @@ export default {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))',
 					light: 'hsl(var(--primary-light))',
-					glow: 'hsl(var(--primary-glow))'
+					dark: 'hsl(var(--primary-dark))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -41,6 +41,10 @@ export default {
 				warning: {
 					DEFAULT: 'hsl(var(--warning))',
 					foreground: 'hsl(var(--warning-foreground))'
+				},
+				error: {
+					DEFAULT: 'hsl(var(--error))',
+					foreground: 'hsl(var(--error-foreground))'
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
@@ -61,6 +65,10 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
+				},
+				'app-header': {
+					DEFAULT: 'hsl(var(--app-header))',
+					foreground: 'hsl(var(--app-header-foreground))'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
@@ -83,8 +91,9 @@ export default {
 				'gradient-card': 'var(--gradient-card)'
 			},
 			boxShadow: {
-				'card': 'var(--shadow-card)',
-				'service': 'var(--shadow-service)'
+				'app': 'var(--shadow-app)',
+				'card': 'var(--shadow-card)', 
+				'lg': 'var(--shadow-lg)'
 			},
 			transitionTimingFunction: {
 				'smooth': 'var(--transition-smooth)'
