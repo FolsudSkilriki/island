@@ -13,18 +13,28 @@ export const CertificatesScreen = ({ onNavigate }: CertificatesScreenProps) => {
   
   const certificates = [
     {
-      id: "driver-license",
-      title: "Ökuskírteini",
-      number: "Skírteinsnúmer: 37321371",
-      bgColor: "bg-gradient-to-br from-pink-200 to-purple-200",
-      textColor: "text-gray-800"
+      id: "disability-cert",
+      title: "Örorkuskírteini", 
+      number: "Skírteinsnúmer: 0906053720",
+      bgColor: "bg-gradient-to-br from-green-200 to-green-300",
+      textColor: "text-gray-800",
+      icon: "🤝"
     },
     {
-      id: "passport", 
+      id: "european-health",
+      title: "Evrópska sjúkratryggingakortið",
+      number: "Skírteinsnúmer: 80352000010000917127", 
+      bgColor: "bg-gradient-to-br from-blue-200 to-blue-300",
+      textColor: "text-gray-800",
+      icon: "🏥"
+    },
+    {
+      id: "passport",
       title: "Vegabréf",
-      number: "Númer vegabréfs: A3652638",
-      bgColor: "bg-gradient-to-br from-blue-200 to-indigo-200",
-      textColor: "text-gray-800"
+      number: "Númer vegabréfs: A3756901",
+      bgColor: "bg-gradient-to-br from-blue-200 to-indigo-200", 
+      textColor: "text-gray-800",
+      icon: "📘"
     }
   ];
 
@@ -220,6 +230,11 @@ export const CertificatesScreen = ({ onNavigate }: CertificatesScreenProps) => {
       </div>
 
       <div className="p-4 space-y-6">
+        {/* Loading spinner */}
+        <div className="flex justify-center py-8">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+        </div>
+
         {/* Certificates List */}
         <div className="space-y-4">
           {certificates.map((cert) => (
@@ -228,17 +243,42 @@ export const CertificatesScreen = ({ onNavigate }: CertificatesScreenProps) => {
               className={`${cert.bgColor} border-0 cursor-pointer`}
               onClick={() => setCurrentView(cert.id)}
             >
-              <CardContent className="p-6">
+              <CardContent className="p-4">
                 <div className="flex items-center justify-between">
-                  <div className="flex-1">
-                    <h3 className={`text-lg font-semibold ${cert.textColor} mb-2`}>
-                      {cert.title}
-                    </h3>
-                    <p className={`text-sm ${cert.textColor} opacity-80`}>
-                      {cert.number}
-                    </p>
+                  <div className="flex items-center space-x-3 flex-1">
+                    <div className="text-2xl">
+                      {cert.icon === "🤝" && (
+                        <div className="w-8 h-8 flex items-center justify-center">
+                          <svg viewBox="0 0 24 24" className="w-6 h-6 text-green-600" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                          </svg>
+                        </div>
+                      )}
+                      {cert.icon === "🏥" && (
+                        <div className="w-8 h-8 flex items-center justify-center">
+                          <svg viewBox="0 0 24 24" className="w-6 h-6 text-blue-600" fill="currentColor">
+                            <path d="M19 8h-2v3h-3v2h3v3h2v-3h3v-2h-3V8zM4 6h5v2h2V6h1V4H4v2zm0 4h5v2H4v-2zm0 4h5v2H4v-2z"/>
+                          </svg>
+                        </div>
+                      )}
+                      {cert.icon === "📘" && (
+                        <div className="w-8 h-8 flex items-center justify-center">
+                          <svg viewBox="0 0 24 24" className="w-6 h-6 text-blue-700" fill="currentColor">
+                            <path d="M6 2c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+                          </svg>
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className={`text-base font-semibold ${cert.textColor} mb-1`}>
+                        {cert.title}
+                      </h3>
+                      <p className={`text-sm ${cert.textColor} opacity-75`}>
+                        {cert.number}
+                      </p>
+                    </div>
                   </div>
-                  <ChevronRight className={`w-6 h-6 ${cert.textColor} opacity-60`} />
+                  <ChevronRight className={`w-5 h-5 ${cert.textColor} opacity-60`} />
                 </div>
               </CardContent>
             </Card>
