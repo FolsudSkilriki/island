@@ -4,6 +4,13 @@ import { CertificatesScreen } from "@/components/mobile/CertificatesScreen";
 import { MailboxScreen } from "@/components/mobile/MailboxScreen";
 import { ApplicationsScreen } from "@/components/mobile/ApplicationsScreen";
 import { ProfileScreen } from "@/components/mobile/ProfileScreen";
+import { FamilyScreen } from "@/components/mobile/FamilyScreen";
+import { VehicleScreen } from "@/components/mobile/VehicleScreen";
+import { PropertiesScreen } from "@/components/mobile/PropertiesScreen";
+import { FinanceScreen } from "@/components/mobile/FinanceScreen";
+import { HealthScreen } from "@/components/mobile/HealthScreen";
+import { FlightsScreen } from "@/components/mobile/FlightsScreen";
+import { PersonalInfoScreen } from "@/components/mobile/PersonalInfoScreen";
 import { BottomNav } from "@/components/mobile/BottomNav";
 import { Button } from "@/components/ui/button";
 import { Clock } from "lucide-react";
@@ -103,6 +110,34 @@ const Index = () => {
       
       {currentScreen === "profile" && (
         <ProfileScreen onNavigate={handleNavigate} />
+      )}
+      
+      {currentScreen === "family" && (
+        <FamilyScreen onNavigate={handleNavigate} />
+      )}
+      
+      {currentScreen === "vehicles" && (
+        <VehicleScreen onNavigate={handleNavigate} />
+      )}
+      
+      {currentScreen === "properties" && (
+        <PropertiesScreen onNavigate={handleNavigate} />
+      )}
+      
+      {currentScreen === "finance" && (
+        <FinanceScreen onNavigate={handleNavigate} />
+      )}
+      
+      {currentScreen === "health" && (
+        <HealthScreen onNavigate={handleNavigate} />
+      )}
+      
+      {currentScreen === "flights" && (
+        <FlightsScreen onNavigate={handleNavigate} />
+      )}
+      
+      {currentScreen === "personal-info" && (
+        <PersonalInfoScreen onNavigate={handleNavigate} />
       )}
 
       <BottomNav activeTab={activeTab} onTabChange={handleTabChange} />

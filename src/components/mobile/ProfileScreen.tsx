@@ -67,7 +67,10 @@ export const ProfileScreen = ({ onNavigate }: ProfileScreenProps) => {
 
       <div className="p-4 space-y-6">
         {/* User Profile Card */}
-        <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-0">
+        <Card 
+          className="bg-gradient-to-r from-blue-50 to-purple-50 border-0 cursor-pointer hover:shadow-lg transition-shadow"
+          onClick={() => onNavigate("personal-info")}
+        >
           <CardContent className="p-6">
             <div className="flex items-center space-x-4">
               <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
