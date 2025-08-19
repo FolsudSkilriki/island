@@ -24,16 +24,16 @@ export const BottomNav = ({ activeTab = "mailbox", onTabChange }: BottomNavProps
             return (
               <div key={tab.id} className="flex-1 flex justify-center">
                 <div className="w-10 h-10 flex items-center justify-center">
-                  <div className="grid grid-cols-3 gap-0.5 w-7 h-7">
-                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-sm"></div>
-                    <div className="w-1.5 h-1.5 bg-blue-600 rounded-sm"></div>
-                    <div className="w-1.5 h-1.5 bg-purple-500 rounded-sm"></div>
-                    <div className="w-1.5 h-3 bg-primary rounded-sm"></div>
-                    <div className="w-1.5 h-1.5 bg-purple-600 rounded-sm"></div>
-                    <div className="w-1.5 h-1.5 bg-purple-700 rounded-sm"></div>
-                    <div className="w-1.5 h-1.5 bg-pink-500 rounded-sm"></div>
-                    <div className="w-1.5 h-1.5 bg-pink-600 rounded-sm"></div>
-                    <div className="w-1.5 h-1.5 bg-red-500 rounded-sm"></div>
+                  <div className="grid grid-cols-3 gap-px w-8 h-8">
+                    <div className="w-2 h-2 bg-[#0061ff] rounded-sm"></div>
+                    <div className="w-2 h-2 bg-[#4f46e5] rounded-sm"></div>
+                    <div className="w-2 h-2 bg-[#7c3aed] rounded-sm"></div>
+                    <div className="w-2 h-2 bg-[#0061ff] rounded-sm"></div>
+                    <div className="w-2 h-2 bg-[#9333ea] rounded-sm"></div>
+                    <div className="w-2 h-2 bg-[#c2410c] rounded-sm"></div>
+                    <div className="w-2 h-2 bg-[#dc2626] rounded-sm"></div>
+                    <div className="w-2 h-2 bg-[#ea580c] rounded-sm"></div>
+                    <div className="w-2 h-2 bg-[#f59e0b] rounded-sm"></div>
                   </div>
                 </div>
               </div>
