@@ -11,6 +11,7 @@ import { FinanceScreen } from "@/components/mobile/FinanceScreen";
 import { HealthScreen } from "@/components/mobile/HealthScreen";
 import { FlightsScreen } from "@/components/mobile/FlightsScreen";
 import { PersonalInfoScreen } from "@/components/mobile/PersonalInfoScreen";
+import { HomeScreen } from "@/components/mobile/HomeScreen";
 import { BottomNav } from "@/components/mobile/BottomNav";
 import { Button } from "@/components/ui/button";
 import { Clock } from "lucide-react";
@@ -25,7 +26,11 @@ const Index = () => {
   };
 
   const handleTabChange = (tab: string) => {
-    if (tab === "center") return; // Skip center logo
+    if (tab === "home") {
+      setActiveTab("mailbox"); // Keep mailbox active visually
+      setCurrentScreen("home");
+      return;
+    }
     setActiveTab(tab);
     setCurrentScreen(tab);
   };
@@ -94,6 +99,10 @@ const Index = () => {
             </div>
           </div>
         </div>
+      )}
+      
+      {currentScreen === "home" && (
+        <HomeScreen onNavigate={handleNavigate} />
       )}
       
       {currentScreen === "mailbox" && (

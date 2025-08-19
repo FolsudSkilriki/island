@@ -20,10 +20,15 @@ export const BottomNav = ({ activeTab = "mailbox", onTabChange }: BottomNavProps
       <div className="flex items-center py-2 px-2">
         {tabs.map((tab, index) => {
           if (tab.id === "center") {
-            // Center logo
+            // Center logo - clickable
             return (
               <div key={tab.id} className="flex-1 flex justify-center">
-                <div className="w-10 h-10 flex items-center justify-center">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="w-10 h-10 p-0 hover:bg-transparent"
+                  onClick={() => onTabChange?.('home')}
+                >
                   <div className="grid grid-cols-3 gap-px w-8 h-8">
                     <div className="w-2 h-2 bg-[#0061ff] rounded-sm"></div>
                     <div className="w-2 h-2 bg-[#4f46e5] rounded-sm"></div>
@@ -35,7 +40,7 @@ export const BottomNav = ({ activeTab = "mailbox", onTabChange }: BottomNavProps
                     <div className="w-2 h-2 bg-[#ea580c] rounded-sm"></div>
                     <div className="w-2 h-2 bg-[#f59e0b] rounded-sm"></div>
                   </div>
-                </div>
+                </Button>
               </div>
             );
           }
