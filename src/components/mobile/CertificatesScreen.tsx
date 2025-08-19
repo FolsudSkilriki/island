@@ -135,8 +135,47 @@ export const CertificatesScreen = ({ onNavigate }: CertificatesScreenProps) => {
           <div className={`p-6 rounded-2xl ${selectedCertificate.bgColor}`}>
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center space-x-3">
-                <div className="text-3xl">
-                  {selectedCertificate.icon}
+                <div className="w-12 h-12 flex items-center justify-center">
+                  {selectedCertificate.id === "driving-license" && (
+                    <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                      <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none">
+                        <rect x="2" y="6" width="20" height="12" rx="2" fill="#003f7f"/>
+                        <rect x="8" y="8" width="8" height="4" fill="#dc143c"/>
+                        <rect x="10" y="6" width="4" height="8" fill="#dc143c"/>
+                        <rect x="8" y="14" width="8" height="2" fill="#fff"/>
+                      </svg>
+                    </div>
+                  )}
+                  {selectedCertificate.id === "disability" && (
+                    <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                      <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none">
+                        <path d="M12 2c-2.5 0-4.5 2-4.5 4.5 0 1.5.7 2.8 1.8 3.6L7 12.5c-.8.8-.8 2.1 0 2.9l2.1 2.1c.4.4 1 .4 1.4 0L12 16l1.5 1.5c.4.4 1 .4 1.4 0l2.1-2.1c.8-.8.8-2.1 0-2.9l-2.3-2.4c1.1-.8 1.8-2.1 1.8-3.6C16.5 4 14.5 2 12 2z" fill="#4ade80"/>
+                        <circle cx="12" cy="6.5" r="2" fill="#fff"/>
+                        <path d="M8.5 14.5c.8-.8 2.1-.8 2.9 0l.6.6.6-.6c.8-.8 2.1-.8 2.9 0" stroke="#4ade80" strokeWidth="1.5" strokeLinecap="round"/>
+                      </svg>
+                    </div>
+                  )}
+                  {selectedCertificate.id === "health-card" && (
+                    <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                      <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none">
+                        <rect x="3" y="6" width="18" height="12" rx="2" fill="#3b82f6"/>
+                        <path d="M12 8v8M8 12h8" stroke="#fff" strokeWidth="2" strokeLinecap="round"/>
+                        <rect x="6" y="4" width="12" height="2" fill="#1e40af"/>
+                      </svg>
+                    </div>
+                  )}
+                  {selectedCertificate.id === "passport" && (
+                    <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                      <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none">
+                        <rect x="4" y="2" width="16" height="20" rx="2" fill="#4338ca"/>
+                        <rect x="6" y="4" width="12" height="3" fill="#fff" opacity="0.9"/>
+                        <rect x="6" y="8" width="8" height="2" fill="#fff" opacity="0.7"/>
+                        <rect x="6" y="11" width="10" height="1.5" fill="#fff" opacity="0.5"/>
+                        <rect x="6" y="13.5" width="6" height="1.5" fill="#fff" opacity="0.5"/>
+                        <circle cx="17" cy="18" r="2" fill="#fbbf24"/>
+                      </svg>
+                    </div>
+                  )}
                 </div>
                 <div>
                   <h2 className={`text-xl font-bold ${selectedCertificate.textColor}`}>
@@ -220,8 +259,47 @@ export const CertificatesScreen = ({ onNavigate }: CertificatesScreenProps) => {
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
-                <div className="text-2xl">
-                  {certificate.icon}
+                <div className="w-12 h-12 flex items-center justify-center">
+                  {certificate.id === "driving-license" && (
+                    <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                      <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none">
+                        <rect x="2" y="6" width="20" height="12" rx="2" fill="#003f7f"/>
+                        <rect x="8" y="8" width="8" height="4" fill="#dc143c"/>
+                        <rect x="10" y="6" width="4" height="8" fill="#dc143c"/>
+                        <rect x="8" y="14" width="8" height="2" fill="#fff"/>
+                      </svg>
+                    </div>
+                  )}
+                  {certificate.id === "disability" && (
+                    <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                      <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none">
+                        <path d="M12 2c-2.5 0-4.5 2-4.5 4.5 0 1.5.7 2.8 1.8 3.6L7 12.5c-.8.8-.8 2.1 0 2.9l2.1 2.1c.4.4 1 .4 1.4 0L12 16l1.5 1.5c.4.4 1 .4 1.4 0l2.1-2.1c.8-.8.8-2.1 0-2.9l-2.3-2.4c1.1-.8 1.8-2.1 1.8-3.6C16.5 4 14.5 2 12 2z" fill="#4ade80"/>
+                        <circle cx="12" cy="6.5" r="2" fill="#fff"/>
+                        <path d="M8.5 14.5c.8-.8 2.1-.8 2.9 0l.6.6.6-.6c.8-.8 2.1-.8 2.9 0" stroke="#4ade80" strokeWidth="1.5" strokeLinecap="round"/>
+                      </svg>
+                    </div>
+                  )}
+                  {certificate.id === "health-card" && (
+                    <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                      <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none">
+                        <rect x="3" y="6" width="18" height="12" rx="2" fill="#3b82f6"/>
+                        <path d="M12 8v8M8 12h8" stroke="#fff" strokeWidth="2" strokeLinecap="round"/>
+                        <rect x="6" y="4" width="12" height="2" fill="#1e40af"/>
+                      </svg>
+                    </div>
+                  )}
+                  {certificate.id === "passport" && (
+                    <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                      <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none">
+                        <rect x="4" y="2" width="16" height="20" rx="2" fill="#4338ca"/>
+                        <rect x="6" y="4" width="12" height="3" fill="#fff" opacity="0.9"/>
+                        <rect x="6" y="8" width="8" height="2" fill="#fff" opacity="0.7"/>
+                        <rect x="6" y="11" width="10" height="1.5" fill="#fff" opacity="0.5"/>
+                        <rect x="6" y="13.5" width="6" height="1.5" fill="#fff" opacity="0.5"/>
+                        <circle cx="17" cy="18" r="2" fill="#fbbf24"/>
+                      </svg>
+                    </div>
+                  )}
                 </div>
                 <div>
                   <h3 className={`font-semibold text-lg ${certificate.textColor}`}>
