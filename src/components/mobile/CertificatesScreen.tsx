@@ -28,6 +28,26 @@ export const CertificatesScreen = ({ onNavigate }: CertificatesScreenProps) => {
 
   const certificates: Certificate[] = [
     {
+      id: "driving-license",
+      title: "Ökuskírteini",
+      number: "37321371",
+      icon: "🏛️",
+      bgColor: "bg-pink-100",
+      textColor: "text-pink-800",
+      details: {
+        fullName: "Tristan Sikora",
+        birthDate: "07.09.2009",
+        issueDate: "20.09.2024",
+        expiryDate: "20.09.2027",
+        additionalInfo: [
+          "Kennitala: 200907-2050",
+          "Útgefandi: Ríkislögreglustjóri",
+          "Réttindaflokkar: B (bifreiðar)",
+          "Í gildi"
+        ]
+      }
+    },
+    {
       id: "disability",
       title: "Örorkuskírteini",
       number: "0906053720",
