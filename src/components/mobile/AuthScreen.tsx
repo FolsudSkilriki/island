@@ -1,72 +1,134 @@
-import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 interface AuthScreenProps {
   onLogin: () => void;
 }
 
 export const AuthScreen = ({ onLogin }: AuthScreenProps) => {
-  return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6 relative">
-      {/* Background illustration dots pattern */}
-      <div className="absolute bottom-0 left-0 right-0 h-1/2 opacity-10">
-        <div className="w-full h-full" style={{
-          backgroundImage: `radial-gradient(circle, hsl(var(--primary)) 1px, transparent 1px)`,
-          backgroundSize: '20px 20px'
-        }} />
-      </div>
+  const [pin, setPin] = useState("");
+  const maxLength = 4;
+
+  const handleNumberClick = (num: string) => {
+    if (pin.length < maxLength) {
+      const newPin = pin + num;
+      setPin(newPin);
       
-      <div className="w-full max-w-sm space-y-8 relative z-10">
-        {/* Logo */}
-        <div className="text-center mb-12">
-          <div className="grid grid-cols-3 gap-1 w-12 h-12 mx-auto mb-8">
-            <div className="bg-blue-500 rounded-sm"></div>
-            <div className="bg-blue-600 rounded-sm"></div>
-            <div className="bg-purple-500 rounded-sm"></div>
-            <div className="bg-primary rounded-sm col-span-1 row-span-2"></div>
-            <div className="bg-pink-500 rounded-sm"></div>
-            <div className="bg-red-500 rounded-sm"></div>
-            <div className="bg-pink-600 rounded-sm"></div>
-            <div className="bg-red-600 rounded-sm"></div>
+      // Auto-authenticate when PIN is complete
+      if (newPin.length === maxLength) {
+        setTimeout(() => {
+          onLogin();
+        }, 300);
+      }
+    }
+  };
+
+  const handleDelete = () => {
+    setPin(pin.slice(0, -1));
+  };
+
+  const numbers = [
+    ["1", "2", "3"],
+    ["4", "5", "6"],
+    ["7", "8", "9"],
+    ["biometric", "0", "delete"]
+  ];
+
+  return (
+    <div className="flex-1 bg-white flex flex-col items-center justify-center p-6 min-h-screen">
+      {/* Logo */}
+      <div className="mb-8">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <circle cx="24" cy="24" r="8" fill="#0061FF" />
+          <circle cx="48" cy="24" r="8" fill="#6B4FBB" />
+          <circle cx="72" cy="24" r="8" fill="#9D3F9D" />
+          <rect x="16" y="40" width="16" height="32" fill="#0061FF" />
+          <circle cx="48" cy="56" r="8" fill="#EE3D8F" />
+          <circle cx="72" cy="56" r="8" fill="#ED1C65" />
+          <circle cx="48" cy="80" r="8" fill="#EE3D8F" />
+          <circle cx="72" cy="80" r="8" fill="#ED1C65" />
+        </svg>
+      </div>
+
+      {/* Title */}
+      <h1 className="text-[20px] font-semibold text-gray-900 mb-8">
+        Sláðu inn 4 tölustafa PIN
+      </h1>
+
+      {/* PIN dots */}
+      <div className="flex space-x-4 mb-12">
+        {[...Array(maxLength)].map((_, i) => (
+          <div
+            key={i}
+            className={`w-3 h-3 rounded-full transition-all ${
+              i < pin.length ? "bg-blue-600" : "bg-gray-300"
+            }`}
+          />
+        ))}
+      </div>
+
+      {/* Number pad */}
+      <div className="w-full max-w-sm">
+        {numbers.map((row, rowIndex) => (
+          <div key={rowIndex} className="flex justify-center gap-6 mb-6">
+            {row.map((item) => {
+              if (item === "biometric") {
+                return (
+                  <button
+                    key={item}
+                    className="w-20 h-20 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 text-2xl font-light"
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <rect x="3" y="11" width="6" height="6" rx="1" />
+                      <rect x="9" y="5" width="6" height="6" rx="1" />
+                      <rect x="15" y="11" width="6" height="6" rx="1" />
+                    </svg>
+                  </button>
+                );
+              }
+              
+              if (item === "delete") {
+                return (
+                  <button
+                    key={item}
+                    onClick={handleDelete}
+                    className="w-20 h-20 rounded-full bg-blue-50 flex items-center justify-center"
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      className="text-blue-600"
+                    >
+                      <path d="M7 7l10 10M7 17L17 7" />
+                    </svg>
+                  </button>
+                );
+              }
+
+              return (
+                <button
+                  key={item}
+                  onClick={() => handleNumberClick(item)}
+                  className="w-20 h-20 rounded-full bg-blue-50 flex items-center justify-center hover:bg-blue-100 transition-colors"
+                >
+                  <span className="text-blue-600 text-3xl font-light">
+                    {item}
+                  </span>
+                </button>
+              );
+            })}
           </div>
-        </div>
-
-        {/* Main text */}
-        <div className="text-center space-y-6">
-          <h1 className="text-2xl font-bold text-foreground leading-tight">
-            Skráðu þig inn í appið<br />
-            með rafrænum<br />
-            skilríkjum
-          </h1>
-        </div>
-
-        {/* Login Button */}
-        <Button 
-          onClick={onLogin}
-          className="w-full h-12 text-base font-medium bg-primary hover:bg-primary/90"
-        >
-          Skrá inn
-        </Button>
-
-        {/* Bottom links */}
-        <div className="flex justify-between text-sm pt-8">
-          <Button variant="ghost" className="text-primary p-0 h-auto font-normal">
-            English
-          </Button>
-          <Button variant="ghost" className="text-primary p-0 h-auto font-normal">
-            Þarftu aðstoð?
-          </Button>
-        </div>
-
-        {/* Bottom illustration */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
-          <svg width="200" height="120" viewBox="0 0 200 120" className="text-primary opacity-20">
-            {/* Simple illustration shapes */}
-            <circle cx="40" cy="80" r="15" fill="currentColor" />
-            <rect x="80" y="70" width="30" height="20" rx="3" fill="currentColor" />
-            <path d="M130 60 L160 85 L130 90 Z" fill="currentColor" />
-            <circle cx="170" cy="75" r="10" fill="currentColor" />
-          </svg>
-        </div>
+        ))}
       </div>
     </div>
   );
