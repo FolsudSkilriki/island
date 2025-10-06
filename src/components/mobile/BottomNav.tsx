@@ -1,4 +1,4 @@
-import { Mail, CreditCard, FileText, User } from "lucide-react";
+import { Mail, Wallet, FileText, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface BottomNavProps {
@@ -9,10 +9,10 @@ interface BottomNavProps {
 export const BottomNav = ({ activeTab = "mailbox", onTabChange }: BottomNavProps) => {
   const tabs = [
     { id: "mailbox", icon: Mail, label: "Pósthólf" },
-    { id: "certificates", icon: CreditCard, label: "Skírteini" },
+    { id: "certificates", icon: Wallet, label: "Skírteini" },
     { id: "center", icon: null, label: "" }, // Center logo
     { id: "applications", icon: FileText, label: "Umsóknir" },
-    { id: "profile", icon: User, label: "Meira" },
+    { id: "profile", icon: Menu, label: "Meira" },
   ];
 
   return (
@@ -29,16 +29,16 @@ export const BottomNav = ({ activeTab = "mailbox", onTabChange }: BottomNavProps
                   className="w-10 h-10 p-0 hover:bg-transparent"
                   onClick={() => onTabChange?.('home')}
                 >
-                  <div className="grid grid-cols-3 gap-px w-8 h-8">
-                    <div className="w-2 h-2 bg-[#0061ff] rounded-sm"></div>
-                    <div className="w-2 h-2 bg-[#4f46e5] rounded-sm"></div>
-                    <div className="w-2 h-2 bg-[#7c3aed] rounded-sm"></div>
-                    <div className="w-2 h-2 bg-[#0061ff] rounded-sm"></div>
-                    <div className="w-2 h-2 bg-[#9333ea] rounded-sm"></div>
-                    <div className="w-2 h-2 bg-[#c2410c] rounded-sm"></div>
-                    <div className="w-2 h-2 bg-[#dc2626] rounded-sm"></div>
-                    <div className="w-2 h-2 bg-[#ea580c] rounded-sm"></div>
-                    <div className="w-2 h-2 bg-[#f59e0b] rounded-sm"></div>
+                  <div className="grid grid-cols-3 gap-[3px] w-8 h-8">
+                    <div className="w-2 h-2 bg-[#0061ff] rounded-full"></div>
+                    <div className="w-2 h-2 bg-[#6366f1] rounded-full"></div>
+                    <div className="w-2 h-2 bg-[#9333ea] rounded-full"></div>
+                    <div className="w-2 h-2 bg-[#0061ff] rounded-full"></div>
+                    <div className="w-2 h-2 bg-[#ec4899] rounded-full"></div>
+                    <div className="w-2 h-2 bg-[#ec4899] rounded-full"></div>
+                    <div className="w-2 h-2 bg-[#0061ff] rounded-full"></div>
+                    <div className="w-2 h-2 bg-[#ec4899] rounded-full"></div>
+                    <div className="w-2 h-2 bg-[#ec4899] rounded-full"></div>
                   </div>
                 </Button>
               </div>

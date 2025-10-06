@@ -1,20 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { ChevronRight, Settings } from "lucide-react";
+import { ChevronRight, Settings, Users, Car, Home, BarChart3, Heart, Plane } from "lucide-react";
 
 interface ProfileScreenProps {
   onNavigate: (screen: string) => void;
 }
 
 export const ProfileScreen = ({ onNavigate }: ProfileScreenProps) => {
-  const profileSections = [
-    { id: "family", title: "Fjölskylda", icon: "👥" },
-    { id: "vehicles", title: "Ökutæki", icon: "🚗" },
-    { id: "properties", title: "Fasteignir", icon: "🏠" },
-    { id: "finance", title: "Fjármál", icon: "📊" },
-    { id: "health", title: "Heilsa", icon: "❤️" },
-    { id: "flights", title: "Loftbrú", icon: "✈️" },
-  ];
-
   return (
     <div className="flex-1 bg-white pb-20">
       {/* Header */}
@@ -50,18 +41,53 @@ export const ProfileScreen = ({ onNavigate }: ProfileScreenProps) => {
 
       {/* Profile Sections */}
       <div className="px-6 grid grid-cols-2 gap-3">
-        {profileSections.map((section) => (
-          <button
-            key={section.id}
-            onClick={() => onNavigate(section.id)}
-            className="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col items-center justify-center space-y-3 hover:bg-gray-50 transition-colors"
-          >
-            <span className="text-4xl">{section.icon}</span>
-            <span className="text-[15px] text-gray-700 font-medium">
-              {section.title}
-            </span>
-          </button>
-        ))}
+        <button
+          onClick={() => onNavigate("family")}
+          className="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col items-center justify-center space-y-3 hover:bg-gray-50 transition-colors"
+        >
+          <Users className="w-10 h-10 text-blue-600" />
+          <span className="text-[17px] text-gray-900 font-medium">Fjölskylda</span>
+        </button>
+
+        <button
+          onClick={() => onNavigate("vehicles")}
+          className="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col items-center justify-center space-y-3 hover:bg-gray-50 transition-colors"
+        >
+          <Car className="w-10 h-10 text-blue-600" />
+          <span className="text-[17px] text-gray-900 font-medium">Ökutæki</span>
+        </button>
+
+        <button
+          onClick={() => onNavigate("properties")}
+          className="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col items-center justify-center space-y-3 hover:bg-gray-50 transition-colors"
+        >
+          <Home className="w-10 h-10 text-blue-600" />
+          <span className="text-[17px] text-gray-900 font-medium">Fasteignir</span>
+        </button>
+
+        <button
+          onClick={() => onNavigate("finance")}
+          className="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col items-center justify-center space-y-3 hover:bg-gray-50 transition-colors"
+        >
+          <BarChart3 className="w-10 h-10 text-blue-600" />
+          <span className="text-[17px] text-gray-900 font-medium">Fjármál</span>
+        </button>
+
+        <button
+          onClick={() => onNavigate("health")}
+          className="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col items-center justify-center space-y-3 hover:bg-gray-50 transition-colors"
+        >
+          <Heart className="w-10 h-10 text-blue-600" />
+          <span className="text-[17px] text-gray-900 font-medium">Heilsa</span>
+        </button>
+
+        <button
+          onClick={() => onNavigate("flights")}
+          className="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col items-center justify-center space-y-3 hover:bg-gray-50 transition-colors"
+        >
+          <Plane className="w-10 h-10 text-blue-600" />
+          <span className="text-[17px] text-gray-900 font-medium">Loftbrú</span>
+        </button>
       </div>
     </div>
   );

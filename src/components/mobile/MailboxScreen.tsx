@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search, Filter, Mail } from "lucide-react";
+import { OrganizationIcon } from "./OrganizationIcon";
 
 interface MailboxScreenProps {
   onNavigate: (screen: string) => void;
@@ -97,20 +98,18 @@ export const MailboxScreen = ({ onNavigate }: MailboxScreenProps) => {
               className="py-4 cursor-pointer hover:bg-muted/30 transition-colors"
               onClick={() => {}}
             >
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <span className="text-lg">{message.icon}</span>
-                </div>
+              <div className="flex items-start space-x-3">
+                <OrganizationIcon organization={message.sender} className="w-11 h-11" />
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between mb-1">
-                    <h3 className="font-medium text-base text-foreground">
+                    <h3 className="font-medium text-[15px] text-gray-600">
                       {message.sender}
                     </h3>
-                    <span className="text-sm text-muted-foreground">
+                    <span className="text-[15px] text-gray-600">
                       {message.date}
                     </span>
                   </div>
-                  <h4 className="font-medium text-base text-foreground mb-1">
+                  <h4 className="font-semibold text-[17px] text-gray-900">
                     {message.subject}
                   </h4>
                 </div>
