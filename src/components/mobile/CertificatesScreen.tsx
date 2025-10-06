@@ -28,32 +28,12 @@ export const CertificatesScreen = ({ onNavigate }: CertificatesScreenProps) => {
 
   const certificates: Certificate[] = [
     {
-      id: "driving-license",
-      title: "Ökuskírteini",
-      number: "37321371",
-      icon: "🏛️",
-      bgColor: "bg-pink-100",
-      textColor: "text-pink-800",
-      details: {
-        fullName: "Tristan Sikora",
-        birthDate: "07.09.2009",
-        issueDate: "20.09.2024",
-        expiryDate: "20.09.2027",
-        additionalInfo: [
-          "Kennitala: 200907-2050",
-          "Útgefandi: Ríkislögreglustjóri",
-          "Réttindaflokkar: B (bifreiðar)",
-          "Í gildi"
-        ]
-      }
-    },
-    {
       id: "disability",
       title: "Örorkuskírteini",
       number: "0906053720",
       icon: "🤝",
-      bgColor: "bg-green-100",
-      textColor: "text-green-800",
+      bgColor: "bg-[#d4e8dc]",
+      textColor: "text-[#1a4d2e]",
       details: {
         fullName: "Hilmir Gauti Bjarnason",
         birthDate: "05.06.1990",
@@ -71,8 +51,8 @@ export const CertificatesScreen = ({ onNavigate }: CertificatesScreenProps) => {
       title: "Evrópska sjúkratryggingarkortiđ",
       number: "80352000010000917127",
       icon: "🏥",
-      bgColor: "bg-blue-100",
-      textColor: "text-blue-800",
+      bgColor: "bg-[#c5cce8]",
+      textColor: "text-[#1e3a8a]",
       details: {
         fullName: "Hilmir Gauti Bjarnason",
         birthDate: "05.06.1990",
@@ -90,8 +70,8 @@ export const CertificatesScreen = ({ onNavigate }: CertificatesScreenProps) => {
       title: "Vegabréf",  
       number: "A3756901",
       icon: "📘",
-      bgColor: "bg-indigo-100",
-      textColor: "text-indigo-800",
+      bgColor: "bg-[#c5cce8]",
+      textColor: "text-[#1e3a8a]",
       details: {
         fullName: "Hilmir Gauti Bjarnason",
         birthDate: "05.06.1990",
@@ -116,17 +96,17 @@ export const CertificatesScreen = ({ onNavigate }: CertificatesScreenProps) => {
 
   if (selectedCertificate) {
     return (
-      <div className="flex-1 bg-background pb-20">
+      <div className="flex-1 bg-white pb-20">
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-border">
+        <div className="flex items-center justify-between p-4 bg-white">
           <Button 
             variant="ghost" 
             size="sm" 
             onClick={handleBack}
-            className="flex items-center space-x-2"
+            className="flex items-center space-x-1 -ml-2"
           >
-            <ChevronLeft className="w-5 h-5" />
-            <span>Til baka</span>
+            <ChevronLeft className="w-5 h-5 text-gray-600" />
+            <span className="text-gray-600">Til baka</span>
           </Button>
         </div>
 
@@ -136,16 +116,6 @@ export const CertificatesScreen = ({ onNavigate }: CertificatesScreenProps) => {
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center space-x-3">
                 <div className="w-12 h-12 flex items-center justify-center">
-                  {selectedCertificate.id === "driving-license" && (
-                    <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-                      <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none">
-                        <rect x="2" y="6" width="20" height="12" rx="2" fill="#003f7f"/>
-                        <rect x="8" y="8" width="8" height="4" fill="#dc143c"/>
-                        <rect x="10" y="6" width="4" height="8" fill="#dc143c"/>
-                        <rect x="8" y="14" width="8" height="2" fill="#fff"/>
-                      </svg>
-                    </div>
-                  )}
                   {selectedCertificate.id === "disability" && (
                     <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
                       <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none">
@@ -243,33 +213,31 @@ export const CertificatesScreen = ({ onNavigate }: CertificatesScreenProps) => {
   }
 
   return (
-    <div className="flex-1 bg-background pb-20">
+    <div className="flex-1 bg-white pb-20">
       {/* Header */}
-      <div className="p-6 pb-4">
-        <h1 className="text-3xl font-bold text-foreground">Skírteini</h1>
+      <div className="pt-4 px-6 pb-6">
+        <div className="flex items-start justify-between mb-6">
+          <h1 className="text-[32px] font-bold text-gray-900 leading-tight">Skírteini</h1>
+          <button className="p-2">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-blue-600">
+              <rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" strokeWidth="2"/>
+              <path d="M9 9h6M9 12h6M9 15h4" stroke="currentColor" strokeWidth="2"/>
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Certificates List */}
-      <div className="px-6 space-y-4">
+      <div className="px-6 space-y-3">
         {certificates.map((certificate) => (
-          <Card
+          <div
             key={certificate.id}
-            className={`p-5 cursor-pointer hover:shadow-lg transition-all duration-200 ${certificate.bgColor} border-0 shadow-sm`}
+            className={`p-5 cursor-pointer rounded-2xl transition-all duration-200 ${certificate.bgColor}`}
             onClick={() => handleCertificateClick(certificate)}
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 flex items-center justify-center">
-                  {certificate.id === "driving-license" && (
-                    <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-                      <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none">
-                        <rect x="2" y="6" width="20" height="12" rx="2" fill="#003f7f"/>
-                        <rect x="8" y="8" width="8" height="4" fill="#dc143c"/>
-                        <rect x="10" y="6" width="4" height="8" fill="#dc143c"/>
-                        <rect x="8" y="14" width="8" height="2" fill="#fff"/>
-                      </svg>
-                    </div>
-                  )}
+                <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
                   {certificate.id === "disability" && (
                     <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
                       <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none">
@@ -302,28 +270,29 @@ export const CertificatesScreen = ({ onNavigate }: CertificatesScreenProps) => {
                   )}
                 </div>
                 <div>
-                  <h3 className={`font-semibold text-lg ${certificate.textColor}`}>
+                  <h3 className={`font-semibold text-[17px] leading-snug mb-1 ${certificate.textColor}`}>
                     {certificate.title}
                   </h3>
-                  <p className={`text-sm ${certificate.textColor} opacity-75 font-medium`}>
-                    Skírteinisnúmer: {certificate.number}
+                  <p className={`text-[13px] ${certificate.textColor} opacity-80`}>
+                    {certificate.id === "passport" ? `Númer vegabréfs: ${certificate.number}` : `Skírteinisnúmer: ${certificate.number}`}
                   </p>
                 </div>
               </div>
-              <ChevronRight className={`w-6 h-6 ${certificate.textColor} opacity-60`} />
+              <ChevronRight className={`w-5 h-5 ${certificate.textColor} opacity-50 flex-shrink-0`} />
             </div>
-          </Card>
+          </div>
         ))}
       </div>
 
       {/* Last Updated */}
       <div className="px-6 pt-8 text-center">
-        <p className="text-muted-foreground mb-4">
-          Síđast uppfært: 19.8.2025
+        <p className="text-gray-500 text-sm mb-3">
+          Síđast uppfært: 18.8.2025
         </p>
-        <Button variant="ghost" className="text-primary font-medium">
-          Uppfæra <RotateCcw className="w-4 h-4 ml-2" />
-        </Button>
+        <button className="text-blue-600 font-medium text-[15px] inline-flex items-center gap-2 hover:underline">
+          Uppfæra
+          <RotateCcw className="w-4 h-4" />
+        </button>
       </div>
     </div>
   );
