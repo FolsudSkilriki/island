@@ -9,60 +9,65 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 220 13% 18%;
+    --foreground: 225 15% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 84% 4.9%;
+    --card-foreground: 225 15% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 84% 4.9%;
+    --popover-foreground: 225 15% 15%;
 
     --primary: 214 100% 50%;
     --primary-foreground: 0 0% 100%;
     
-    --primary-light: 214 100% 95%;
-    --primary-dark: 214 100% 45%;
+    --primary-light: 214 100% 96%;
+    --primary-dark: 214 100% 42%;
 
-    --secondary: 220 13% 95%;
-    --secondary-foreground: 220 13% 18%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 225 15% 15%;
 
-    --muted: 210 40% 98%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
 
-    --accent: 214 100% 97%;
-    --accent-foreground: 224 76% 48%;
+    --accent: 220 14% 96%;
+    --accent-foreground: 225 15% 15%;
 
-    --success: 142 76% 36%;
-    --success-foreground: 210 40% 98%;
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
     
     --warning: 38 92% 50%;
-    --warning-foreground: 222 84% 4.9%;
+    --warning-foreground: 0 0% 100%;
     
     --error: 0 84% 60%;
-    --error-foreground: 210 40% 98%;
+    --error-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 221 83% 53%;
+    --ring: 214 100% 50%;
     
     /* Mobile app specific variables */
     --app-header: 0 0% 100%;
-    --app-header-foreground: 222 84% 4.9%;
-    --status-bar: 210 20% 98%;
+    --app-header-foreground: 225 15% 15%;
+    --status-bar: 0 0% 98%;
+    
+    /* Ísland.is specific colors */
+    --certificate-pink: 340 82% 91%;
+    --certificate-green: 150 40% 88%;
+    --certificate-blue: 214 65% 90%;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-dark)));
-    --gradient-card: linear-gradient(180deg, hsl(var(--card)), hsl(var(--accent)));
+    --gradient-primary: linear-gradient(135deg, hsl(214 100% 50%), hsl(214 100% 42%));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(220 14% 96%));
     
     /* Shadows */
-    --shadow-app: 0 1px 3px 0 hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow-card: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -2px hsl(0 0% 0% / 0.1);
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -2px hsl(0 0% 0% / 0.1);
     --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.1), 0 4px 6px -4px hsl(0 0% 0% / 0.1);
     
-    --radius: 0.5rem;
+    --radius: 12px;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5% 26%;
@@ -145,7 +150,10 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-white text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
     font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
