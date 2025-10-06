@@ -1,102 +1,120 @@
+import { ChevronLeft, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Heart, FileText, Calendar, Pill } from "lucide-react";
 
 interface HealthScreenProps {
   onNavigate: (screen: string) => void;
 }
 
 export const HealthScreen = ({ onNavigate }: HealthScreenProps) => {
-  const healthServices = [
-    {
-      title: "Læknaskýrslur",
-      description: "Aðgangur að þínum læknaskýrslum",
-      icon: <FileText className="w-5 h-5" />,
-      status: "Virkt"
-    },
-    {
-      title: "Tímabókanir",
-      description: "Bóka tíma hjá heilbrigðisþjónustu",
-      icon: <Calendar className="w-5 h-5" />,
-      status: "Virkt"
-    },
-    {
-      title: "Lyfjagreiðslur",
-      description: "Yfirlit yfir lyfjagreiðslur",
-      icon: <Pill className="w-5 h-5" />,
-      status: "Virkt"
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-background pb-20">
+    <div className="flex-1 bg-white pb-20 min-h-screen">
       {/* Header */}
-      <div className="sticky top-0 z-10 bg-background border-b border-border px-4 py-4">
-        <div className="flex items-center space-x-4">
-          <Button 
-            variant="ghost" 
-            size="sm"
-            onClick={() => onNavigate("profile")}
-          >
-            <ArrowLeft className="w-5 h-5" />
-          </Button>
-          <h1 className="text-2xl font-bold">Heilsa</h1>
-        </div>
+      <div className="flex items-center px-4 py-4">
+        <button
+          onClick={() => onNavigate("profile")}
+          className="flex items-center text-blue-600 -ml-2"
+        >
+          <ChevronLeft className="w-6 h-6" />
+          <span className="text-[17px]">Meira</span>
+        </button>
+        <h1 className="absolute left-1/2 transform -translate-x-1/2 text-[17px] font-semibold text-gray-900">
+          Heilsa
+        </h1>
       </div>
 
-      <div className="p-4 space-y-6">
-        {/* Health Info Card */}
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center space-x-4 mb-4">
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                <Heart className="w-6 h-6 text-primary" />
-              </div>
-              <div>
-                <h2 className="text-lg font-semibold">Heilsan mín</h2>
-                <p className="text-sm text-muted-foreground">Heilsufarsupplýsingar og þjónusta</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+      <div className="px-6 pt-4">
+        {/* Title */}
+        <h2 className="text-[28px] font-bold text-gray-900 mb-6">Heilsan mín</h2>
 
-        {/* Health Services */}
-        <div className="space-y-4">
-          <h3 className="text-lg font-semibold">Heilbrigðisþjónusta</h3>
-          {healthServices.map((service, index) => (
-            <Card key={index} className="cursor-pointer hover:shadow-lg transition-shadow">
-              <CardContent className="p-4">
-                <div className="flex items-center space-x-4">
-                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                    {service.icon}
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="font-medium">{service.title}</h4>
-                    <p className="text-sm text-muted-foreground">{service.description}</p>
-                  </div>
-                  <Badge variant="secondary" className="bg-success/10 text-success">
-                    {service.status}
-                  </Badge>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+        <p className="text-[15px] text-gray-600 mb-6 leading-relaxed">
+          Hér finnur þú þín heilsufarsgögn, heilsugæslu og sjúkratryggingar
+        </p>
+
+        {/* Action Buttons */}
+        <div className="space-y-3 mb-8">
+          <Button
+            variant="outline"
+            className="w-full md:w-auto justify-start text-[15px] font-medium text-gray-700 border-gray-300 hover:bg-gray-50 h-12"
+          >
+            <span className="flex-1 text-left">Bólusetningar</span>
+          </Button>
+
+          <Button
+            variant="outline"
+            className="w-full md:w-auto justify-start text-[15px] font-medium text-gray-700 border-gray-300 hover:bg-gray-50 h-12"
+          >
+            <span className="flex-1 text-left">Þjálfun</span>
+            <ExternalLink className="w-4 h-4 ml-2" />
+          </Button>
+
+          <Button
+            variant="outline"
+            className="w-full md:w-auto justify-start text-[15px] font-medium text-gray-700 border-gray-300 hover:bg-gray-50 h-12"
+          >
+            <span className="flex-1 text-left">Hjálpartæki og næring</span>
+            <ExternalLink className="w-4 h-4 ml-2" />
+          </Button>
         </div>
 
-        {/* Recent Activity */}
-        <div className="space-y-4">
-          <h3 className="text-lg font-semibold">Nýleg virkni</h3>
-          <Card>
-            <CardContent className="p-4 text-center">
-              <div className="w-16 h-16 bg-muted/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Heart className="w-8 h-8 text-muted-foreground" />
-              </div>
-              <p className="text-muted-foreground text-sm">
-                Engin nýleg virkni í heilbrigðisþjónustu
+        {/* Sections */}
+        <div className="space-y-6">
+          {/* Health Provider */}
+          <div>
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-[20px] font-bold text-gray-900">Heilsugæsla</h3>
+              <button className="text-blue-600 text-[15px] font-medium flex items-center">
+                Sjá allt
+                <ExternalLink className="w-4 h-4 ml-1" />
+              </button>
+            </div>
+
+            <div className="bg-gray-50 rounded-xl p-5">
+              <p className="text-[13px] text-gray-500 mb-1">Heilsugæsla</p>
+              <p className="text-[17px] font-bold text-gray-900 mb-3">
+                Heilsugæslan Urðarhvarfi
               </p>
-            </CardContent>
-          </Card>
+
+              <p className="text-[13px] text-gray-500 mb-1">Heimilislæknir</p>
+              <p className="text-[17px] font-bold text-gray-900">
+                Viktor Davíð Sigurðsson
+              </p>
+            </div>
+          </div>
+
+          {/* Legal Status */}
+          <div>
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-[20px] font-bold text-gray-900">Réttindastaða</h3>
+              <button className="text-blue-600 text-[15px] font-medium flex items-center">
+                Sjá allt
+                <ExternalLink className="w-4 h-4 ml-1" />
+              </button>
+            </div>
+
+            <div className="bg-gray-50 rounded-xl p-5">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <p className="text-[13px] text-gray-500 mb-1">Sjúkratrygging frá</p>
+                  <p className="text-[17px] font-bold text-gray-900">9.6.2005</p>
+                </div>
+                <div>
+                  <p className="text-[13px] text-gray-500 mb-1">Staða</p>
+                  <p className="text-[17px] font-bold text-gray-900">Örorkuþegi</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Medical History */}
+          <div>
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-[20px] font-bold text-gray-900">Greiðsluþátttaka</h3>
+              <button className="text-blue-600 text-[15px] font-medium flex items-center">
+                Sjá allt
+                <ExternalLink className="w-4 h-4 ml-1" />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

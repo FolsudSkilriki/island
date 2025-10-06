@@ -1,113 +1,127 @@
+import { ChevronLeft, ChevronDown, ExternalLink } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, BarChart3, CheckCircle, AlertCircle } from "lucide-react";
 
 interface FinanceScreenProps {
   onNavigate: (screen: string) => void;
 }
 
 export const FinanceScreen = ({ onNavigate }: FinanceScreenProps) => {
-  const finances = [
+  const [expandedSections, setExpandedSections] = useState<string[]>([]);
+
+  const toggleSection = (section: string) => {
+    setExpandedSections((prev) =>
+      prev.includes(section)
+        ? prev.filter((s) => s !== section)
+        : [...prev, section]
+    );
+  };
+
+  const financialData = [
     {
-      institution: "Ríkisskattstjóri",
-      status: "Jákvæð",
-      amount: "12.450 kr",
-      type: "credit",
-      description: "Ofgreitt í tekjuskatt"
+      id: "local-fees",
+      title: "Þing- og sveitarsjóðsgjöld",
+      amount: "206.357 kr.",
+      status: "Staða"
     },
     {
-      institution: "Tryggingastofnun",
-      status: "Jákvæð", 
-      amount: "0 kr",
-      type: "neutral",
-      description: "Engin skuld"
+      id: "vehicle-fees",
+      title: "Bifreiðagjald",
+      amount: "268.841 kr.",
+      status: "Staða"
     },
     {
-      institution: "Innheimtustofnun sveitarfélaga",
-      status: "Jákvæð",
-      amount: "0 kr", 
-      type: "neutral",
-      description: "Engin skuld"
+      id: "unlicensed-vehicles",
+      title: "Gjald v/óskoðaðra ökutækja",
+      amount: "77.750 kr.",
+      status: "Staða"
+    },
+    {
+      id: "court-fees",
+      title: "Dómsektir og sakarkostnaður",
+      amount: "345.034 kr.",
+      status: "Staða"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-background pb-20">
+    <div className="flex-1 bg-white pb-20 min-h-screen">
       {/* Header */}
-      <div className="sticky top-0 z-10 bg-background border-b border-border px-4 py-4">
-        <div className="flex items-center space-x-4">
-          <Button 
-            variant="ghost" 
-            size="sm"
-            onClick={() => onNavigate("profile")}
-          >
-            <ArrowLeft className="w-5 h-5" />
-          </Button>
-          <h1 className="text-2xl font-bold">Fjármál</h1>
-        </div>
+      <div className="flex items-center px-4 py-4">
+        <button
+          onClick={() => onNavigate("profile")}
+          className="flex items-center text-blue-600 -ml-2"
+        >
+          <ChevronLeft className="w-6 h-6" />
+          <span className="text-[17px]">Meira</span>
+        </button>
+        <h1 className="absolute left-1/2 transform -translate-x-1/2 text-[17px] font-semibold text-gray-900">
+          Fjármál
+        </h1>
       </div>
 
-      <div className="p-4 space-y-6">
-        {/* Finance Info Card */}
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center space-x-4 mb-4">
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                <BarChart3 className="w-6 h-6 text-primary" />
-              </div>
-              <div>
-                <h2 className="text-lg font-semibold">Fjárhagsyfirlit</h2>
-                <p className="text-sm text-muted-foreground">Staða við ríkissjóð og stofnanir</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+      <div className="px-6 pt-4">
+        {/* Title */}
+        <h2 className="text-[28px] font-bold text-gray-900 mb-2">Fjármál</h2>
 
-        {/* Financial Status */}
-        <div className="space-y-4">
-          <h3 className="text-lg font-semibold">Staða við stofnanir</h3>
-          {finances.map((finance, index) => (
-            <Card key={index}>
-              <CardContent className="p-4">
-                <div className="space-y-3">
-                  <div className="flex justify-between items-start">
-                    <div className="flex-1">
-                      <h4 className="font-medium">{finance.institution}</h4>
-                      <p className="text-sm text-muted-foreground">{finance.description}</p>
-                    </div>
-                    <div className="text-right">
-                      <Badge 
-                        variant="secondary" 
-                        className={
-                          finance.type === "credit" 
-                            ? "bg-success/10 text-success" 
-                            : "bg-muted text-muted-foreground"
-                        }
-                      >
-                        {finance.status}
-                      </Badge>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      {finance.type === "credit" ? (
-                        <CheckCircle className="w-4 h-4 text-success" />
-                      ) : (
-                        <CheckCircle className="w-4 h-4 text-muted-foreground" />
-                      )}
-                      <span className="text-sm text-muted-foreground">Staða:</span>
-                    </div>
-                    <span className={`font-semibold ${
-                      finance.type === "credit" ? "text-success" : "text-foreground"
-                    }`}>
-                      {finance.amount}
-                    </span>
+        {/* Subtitle */}
+        <h3 className="text-[20px] font-semibold text-gray-900 mb-4">
+          Staða við ríkissjóð og stofnanir
+        </h3>
+
+        <p className="text-[15px] text-gray-600 mb-4 leading-relaxed">
+          Hér sérð þú sundurliðun skulda og/eða inneigna hjá ríkissjóði og stofnunum.
+        </p>
+
+        {/* Total Amount */}
+        <div className="mb-6">
+          <p className="text-[13px] text-gray-500 mb-1">Samtals:</p>
+          <p className="text-[32px] font-bold text-gray-900">1.497.982 kr.</p>
+        </div>
+
+        {/* Analysis Button */}
+        <Button
+          variant="outline"
+          className="w-fit mb-8 text-[15px] font-medium text-gray-700 border-gray-300 hover:bg-gray-50"
+        >
+          Gera greiðsluáætlun
+          <ExternalLink className="w-4 h-4 ml-2" />
+        </Button>
+
+        {/* Financial Items */}
+        <div className="space-y-3">
+          {financialData.map((item) => (
+            <div
+              key={item.id}
+              className="bg-blue-50 rounded-xl overflow-hidden"
+            >
+              <button
+                onClick={() => toggleSection(item.id)}
+                className="w-full p-5 flex items-center justify-between hover:bg-blue-100 transition-colors"
+              >
+                <div className="flex items-center space-x-3">
+                  <ChevronDown
+                    className={`w-5 h-5 text-blue-600 transition-transform ${
+                      expandedSections.includes(item.id) ? "rotate-180" : ""
+                    }`}
+                  />
+                  <div className="text-left">
+                    <h4 className="text-[17px] font-semibold text-gray-900">
+                      {item.status}
+                    </h4>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+                <p className="text-[17px] font-bold text-gray-900">
+                  {item.amount}
+                </p>
+              </button>
+
+              {expandedSections.includes(item.id) && (
+                <div className="px-5 pb-5">
+                  <p className="text-[15px] text-gray-700">{item.title}</p>
+                </div>
+              )}
+            </div>
           ))}
         </div>
       </div>

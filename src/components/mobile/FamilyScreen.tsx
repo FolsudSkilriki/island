@@ -1,82 +1,58 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, Users } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 
 interface FamilyScreenProps {
   onNavigate: (screen: string) => void;
 }
 
 export const FamilyScreen = ({ onNavigate }: FamilyScreenProps) => {
-  const familyMembers = [
-    {
-      name: "Sigríður Helga Björnsdóttir",
-      relation: "Maki",
-      kennitala: "050680-2239"
-    },
-    {
-      name: "Elín Björk Hilmisdóttir",
-      relation: "Barn",
-      kennitala: "161210-3340"
-    },
-    {
-      name: "Björn Óli Hilmisson",
-      relation: "Barn", 
-      kennitala: "280814-2479"
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-background pb-20">
+    <div className="flex-1 bg-white pb-20 min-h-screen">
       {/* Header */}
-      <div className="sticky top-0 z-10 bg-background border-b border-border px-4 py-4">
-        <div className="flex items-center space-x-4">
-          <Button 
-            variant="ghost" 
-            size="sm"
-            onClick={() => onNavigate("profile")}
-          >
-            <ArrowLeft className="w-5 h-5" />
-          </Button>
-          <h1 className="text-2xl font-bold">Fjölskylda</h1>
-        </div>
+      <div className="flex items-center px-4 py-4">
+        <button
+          onClick={() => onNavigate("profile")}
+          className="flex items-center text-blue-600 -ml-2"
+        >
+          <ChevronLeft className="w-6 h-6" />
+          <span className="text-[17px]">Meira</span>
+        </button>
+        <h1 className="absolute left-1/2 transform -translate-x-1/2 text-[17px] font-semibold text-gray-900">
+          Fjölskylda
+        </h1>
       </div>
 
-      <div className="p-4 space-y-6">
-        {/* Family Info Card */}
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center space-x-4 mb-4">
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                <Users className="w-6 h-6 text-primary" />
-              </div>
-              <div>
-                <h2 className="text-lg font-semibold">Fjölskylduupplýsingar</h2>
-                <p className="text-sm text-muted-foreground">Upplýsingar frá Þjóðskrá</p>
-              </div>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              Hér munu birtast upplýsingar um fjölskyldu þína frá Þjóðskrá.
-            </p>
-          </CardContent>
-        </Card>
+      {/* Illustration and Message */}
+      <div className="flex flex-col items-center justify-center px-8 mt-32">
+        {/* SVG Illustration */}
+        <svg
+          width="250"
+          height="250"
+          viewBox="0 0 250 250"
+          fill="none"
+          className="mb-8"
+        >
+          {/* Family illustration with purple/pink colors matching Island.is style */}
+          <circle cx="50" cy="80" r="30" fill="#E8D5F2" />
+          <ellipse cx="50" cy="130" rx="35" ry="50" fill="#C5A8E0" />
+          
+          <circle cx="125" cy="60" r="25" fill="#F2C9E0" />
+          <rect x="100" y="85" width="50" height="60" rx="10" fill="#E08FB8" />
+          
+          <circle cx="200" cy="90" r="28" fill="#D1A3C3" />
+          <ellipse cx="200" cy="140" rx="32" ry="48" fill="#B87FA5" />
+          
+          <path d="M 40 200 Q 125 180 210 200" stroke="#9D6EB8" strokeWidth="3" fill="none" strokeDasharray="5,5" />
+          <circle cx="80" cy="200" r="4" fill="#6B4F9D" />
+          <circle cx="170" cy="200" r="4" fill="#6B4F9D" />
+        </svg>
 
-        {/* Family Members */}
-        <div className="space-y-4">
-          <h3 className="text-lg font-semibold">Fjölskyldumeðlimir</h3>
-          {familyMembers.map((member, index) => (
-            <Card key={index}>
-              <CardContent className="p-4">
-                <div className="space-y-2">
-                  <h4 className="font-medium">{member.name}</h4>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">{member.relation}</span>
-                    <span className="text-sm font-mono">{member.kennitala}</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        <h2 className="text-[22px] font-bold text-gray-900 mb-4 text-center">
+          Fjölskyldu upplýsingar
+        </h2>
+        <p className="text-[15px] text-gray-600 text-center leading-relaxed">
+          Hér munu birtast upplýsingar um fjölskyldu þína frá Þjóðskrá.
+        </p>
       </div>
     </div>
   );
