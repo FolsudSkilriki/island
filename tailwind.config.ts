@@ -127,6 +127,4 @@ export default {
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
-} corePlugins: { preflight: false },
-	plugins: [require("tailwindcss-animate")],
 } satisfies Config;
