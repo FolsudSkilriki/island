@@ -1,0 +1,51 @@
+{
+  "typography": {
+    "fontFamily": "IBM Plex Sans",
+    "scale": {
+      "xs": {
+        "size": 12,
+        "lineHeight": 16,
+        "letterSpacing": 0
+      },
+      "sm": {
+        "size": 14,
+        "lineHeight": 20,
+        "letterSpacing": 0
+      },
+      "md": {
+        "size": 16,
+        "lineHeight": 24,
+        "letterSpacing": 0
+      },
+      "lg": {
+        "size": 18,
+        "lineHeight": 24,
+        "letterSpacing": 0
+      },
+      "xl": {
+        "size": 20,
+        "lineHeight": 28,
+        "letterSpacing": 0
+      }
+    }
+  },
+  "radius": {
+    "sm": 8,
+    "md": 12,
+    "lg": 16,
+    "xl": 28
+  },
+  "shadow": {
+    "card": "0 2px 8px rgba(0,0,0,0.08)",
+    "elevated": "0 6px 24px rgba(0,0,0,0.12)"
+  },
+  "color": {
+    "brandBlue": "#0A84FF",
+    "surface": "#FFFFFF",
+    "text": "#111111",
+    "muted": "#6B7280",
+    "success": "#0F9D58",
+    "warning": "#F59E0B",
+    "danger": "#D93025"
+  }
+}

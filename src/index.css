@@ -1,3 +1,11 @@
+
+/* === Pixel parity reset + IBM Plex Sans === */
+html, body { margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+:root { color-scheme: light; }
+body { font-family: "IBM Plex Sans", system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
