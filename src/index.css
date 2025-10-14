@@ -1,3 +1,12 @@
+﻿/* ===== Pixel-Deterministic Reset (added) ===== */
+html, body { margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; }
+button, input, select, textarea { font: inherit; }
+img, svg, video, canvas { display: block; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+:root { --si-text:#111111; --si-bg:#ffffff; --si-muted:#6b7280; --si-brand:#0a84ff; --si-radius:12px; --si-shadow-card:0 2px 8px rgba(0,0,0,0.08); }
+body { background: var(--si-bg); color: var(--si-text); }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -53,7 +62,7 @@ All colors MUST be HSL.
     --app-header-foreground: 225 15% 15%;
     --status-bar: 0 0% 98%;
     
-    /* Ísland.is specific colors */
+    /* Ãsland.is specific colors */
     --certificate-pink: 340 82% 91%;
     --certificate-green: 150 40% 88%;
     --certificate-blue: 214 65% 90%;
